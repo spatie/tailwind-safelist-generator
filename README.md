@@ -1,13 +1,49 @@
-# Tailwind plugin to generate purge-safe.txt files
+# Tailwind plugin to generate safelist.txt files
 
-[![Latest Version on NPM](https://img.shields.io/npm/v/tailwind-purge-safe-generator.svg?style=flat-square)](https://npmjs.com/package/tailwind-purge-safe-generator)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-purge-safe-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-purge-safe-generator/actions?query=workflow%3Arun-tests+branch%3Amain)
+[![Latest Version on NPM](https://img.shields.io/npm/v/tailwind-safelist-generator.svg?style=flat-square)](https://npmjs.com/package/tailwind-safelist-generator)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-safelist-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-safelist-generator/actions?query=workflow%3Arun-tests+branch%3Amain)
 
-…
+```js
+module.exports = {
+  plugins: [
+    require('tailwind-safelist-generator')({
+      path: 'safelist.txt',
+      patterns: [
+        'text-{colors}',
+        'border-{borderWidth}',
+        '{screens}:gap-{spacing},
+      ],
+    }),
+  ],
+};
+```
+
+As Tailwind suggest, [write purgeable HTML](https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html) when possible. However, sometimes purgeable HTML isn't an option, like when you need to generate Tailwind classes with data from a CMS.
+
+To ensure classes that don't appear in your codebase don't get purged, you can maintain a plain `.txt` listing them so Tailwind will pick them up and generate them.
+
+For example, a `safelist.txt` file in the root of your project that get's included in Tailwinds `purge` option.
+
+```txt
+text-red-100
+text-red-200
+```
+
+```js
+module.exports = {
+  mode: 'jit'
+  purge: [
+    './**/*.html',
+    './safelist.txt',
+  ],
+};
+```
+
+Maintaining this list can be cumbersome, because whenever you update your theme, you need to update the list. That's why we created `tailwind-safelist-generator`, so you can declare a set of classes you don't want to purge that stay in sync with your theme.
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/tailwind-purge-safe-generator.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/tailwind-purge-safe-generator)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/tailwind-safelist-generator.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/tailwind-safelist-generator)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -18,12 +54,90 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via npm or yarn:
 
 ```bash
-npm i tailwind-purge-safe-generator
+npm i tailwind-safelist-generator
 ```
 
-## Usage
+Next, register the plugin in your Tailwind configuration file and specify the patterns you want to safelist. Don't forget to add `./safelist.txt` to Tailwind's `purge` option.
 
-…
+```js
+module.exports = {
+  mode: 'jit'
+  purge: [
+    './**/*.html',
+    './safelist.txt',
+  ],
+  plugins: [
+    require('tailwind-safelist-generator')({
+      patterns: [
+        'text-{colors}',
+        'border-{borderWidth}',
+        '{screens}:gap-{spacing},
+      ],
+    }),
+  ],
+};
+```
+
+## Options
+
+### `path`
+
+The path and filename where `safelist.txt` will be generated. By default, it's placed in the root of your project.
+
+```js
+module.exports = {
+  plugins: [
+    require('tailwind-safelist-generator')({
+      path: 'resources/css/safelist.txt',
+      patterns: [
+        // …
+      ],
+    }),
+  ],
+};
+```
+
+### `patterns`
+
+The patterns to generate the list from.
+
+```js
+module.exports = {
+  plugins: [
+    require('tailwind-safelist-generator')({
+      patterns: [
+        'text-{color}',
+        'border-{borderWidth}',
+        '{screens}:gap-{spacing},
+      ],
+    }),
+  ],
+};
+```
+
+Each token wrapped in `{}` will be passed through Tailwind's `theme()` helper to retrieve all possible values. Then the plugin generates a list of all combinations.
+
+```txt
+text-{colors} → text-{red-100,red-200,…}
+
+text-red-100
+text-red-200
+```
+
+Using more than one token may generate a long list of combinations:
+
+```txt
+{screens}:gap-{spacing} → {sm,lg}:gap-{0,1,2,4}
+
+sm:gap-0
+sm:gap-1
+sm:gap-2
+sm:gap-4
+md:gap-0
+md:gap-1
+md:gap-2
+md:gap-4
+```
 
 ## Testing
 

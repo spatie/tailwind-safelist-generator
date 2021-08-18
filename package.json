@@ -1,7 +1,7 @@
 {
-  "name": "tailwind-purge-safe-generator",
+  "name": "tailwind-safelist-generator",
   "version": "0.1.0",
-  "description": "Tailwind plugin to generate purge-safe.txt files",
+  "description": "Tailwind plugin to generate safelist.txt files",
   "main": "index.js",
   "scripts": {
     "test": "jest"
