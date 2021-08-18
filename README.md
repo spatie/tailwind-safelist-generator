@@ -1,7 +1,7 @@
 # Tailwind plugin to generate purge-safe.txt files
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/tailwind-purge-safe-generator.svg?style=flat-square)](https://npmjs.com/package/tailwind-purge-safe-generator)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-purge-safe-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-purge-safe-generator/actions?query=workflow%3Arun-tests+branch%3Amaster)
+[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-purge-safe-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-purge-safe-generator/actions?query=workflow%3Arun-tests+branch%3Amain)
 
 …
 
