@@ -7,3 +7,5 @@ module.exports = plugin.withOptions(function ({ path = 'purge-safe.txt', pattern
         fs.writeFileSync(path, generator(theme)(patterns).join('\n'));
     };
 });
+
+// Trigger actions…
