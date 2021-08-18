@@ -3,6 +3,8 @@
 [![Latest Version on NPM](https://img.shields.io/npm/v/tailwind-safelist-generator.svg?style=flat-square)](https://npmjs.com/package/tailwind-safelist-generator)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-safelist-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-safelist-generator/actions?query=workflow%3Arun-tests+branch%3Amain)
 
+With `tailwind-safelist-generator`, you can generate a `safelist.txt` file for your theme based on a set of patterns.
+
 ```js
 module.exports = {
   plugins: [
