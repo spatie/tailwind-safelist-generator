@@ -20,7 +20,7 @@ module.exports = {
 };
 ```
 
-As Tailwind suggest, [write purgeable HTML](https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html) when possible. However, sometimes purgeable HTML isn't an option, like when you need to generate Tailwind classes with data from a CMS.
+As Tailwind suggest, [write purgeable HTML](https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html) when possible. But sometimes purgeable HTML isn't an option, like when you need to generate Tailwind classes with data from a CMS.
 
 To ensure classes that don't appear in your codebase don't get purged, you can maintain a plain `.txt` listing them so Tailwind will pick them up and generate them.
 
@@ -41,7 +41,7 @@ module.exports = {
 };
 ```
 
-Maintaining this list can be cumbersome, because whenever you update your theme, you need to update the list. That's why we created `tailwind-safelist-generator`, so you can declare a set of classes you don't want to purge that stay in sync with your theme.
+Maintaining this list can become cumbersome, because whenever you update your theme, you need to update the list. That's why we created `tailwind-safelist-generator`, so you can declare a set of classes you don't want to purge that stay in sync with your theme.
 
 ## Support us
 
@@ -79,6 +79,8 @@ module.exports = {
   ],
 };
 ```
+
+We recommend adding `safelist.txt` to your `.gitignore` file, since it's an artifact that gets generated whenever Tailwind generates CSS.
 
 ## Options
 
