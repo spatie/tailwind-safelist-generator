@@ -1,0 +1,21 @@
+{
+  "name": "tailwind-purge-safe-generator",
+  "version": "0.1.0",
+  "description": "Tailwind plugin to generate purge-safe.txt files",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "tailwind"
+  ],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "tailwindcss": "^2.2.7"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6",
+    "tailwindcss": "^2.2.7"
+  }
+}
