@@ -1,6 +1,6 @@
 {
   "name": "tailwind-safelist-generator",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Tailwind plugin to generate safelist.txt files",
   "main": "index.js",
   "scripts": {
