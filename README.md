@@ -1,12 +1,16 @@
 # Tailwind plugin to generate safelist.txt files
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/tailwind-safelist-generator.svg?style=flat-square)](https://npmjs.com/package/tailwind-safelist-generator)
-[![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/spatie/tailwind-safelist-generator/run-tests?label=tests)](https://github.com/spatie/tailwind-safelist-generator/actions?query=workflow%3Arun-tests+branch%3Amain)
 
 With `tailwind-safelist-generator`, you can generate a `safelist.txt` file for your theme based on a set of patterns.
 
 ```js
 module.exports = {
+  mode: 'jit'
+  purge: [
+    './**/*.html',
+    './safelist.txt',
+  ],
   plugins: [
     require('tailwind-safelist-generator')({
       path: 'safelist.txt',
@@ -20,11 +24,9 @@ module.exports = {
 };
 ```
 
-As Tailwind suggest, [write purgeable HTML](https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html) when possible. But sometimes purgeable HTML isn't an option, like when you need to generate Tailwind classes with data from a CMS.
+Before you consider this plugin, we recommend reading Tailwind's [purgeable HTML docs](https://tailwindcss.com/docs/optimizing-for-production#writing-purgeable-html). If this isn't an option—like when you need to generate Tailwind classes with dynamic data from a CMS—this is for you.
 
-To ensure classes that don't appear in your codebase don't get purged, you can maintain a plain `.txt` listing them so Tailwind will pick them up and generate them.
-
-For example, a `safelist.txt` file in the root of your project that get's included in Tailwinds `purge` option.
+Tailwind's JIT mode scans your codebase for class names, and generates CSS based on what it finds. If a class name is not listed explicitly, like `text-${error ? 'red' : 'green'}-500`, Tailwind won't discover it. To ensure these utilities are generated, you can maintain a file that lists them explicitly, like a `safelist.txt` file in the root of your project.
 
 ```txt
 text-red-100
@@ -41,7 +43,7 @@ module.exports = {
 };
 ```
 
-Maintaining this list can become cumbersome, because whenever you update your theme, you need to update the list. That's why we created `tailwind-safelist-generator`, so you can declare a set of classes you don't want to purge that stay in sync with your theme.
+Maintaining this list can become cumbersome, because whenever you update your theme you need to update the safelist. That's why we created `tailwind-safelist-generator`, so you can declare a set of classes you don't want to purge that stay in sync with your theme.
 
 ## Support us
 
