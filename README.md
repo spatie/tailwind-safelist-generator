@@ -17,7 +17,7 @@ module.exports = {
       patterns: [
         'text-{colors}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing},
+        '{screens}:gap-{spacing}',
       ],
     }),
   ],
@@ -75,7 +75,7 @@ module.exports = {
       patterns: [
         'text-{colors}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing},
+        '{screens}:gap-{spacing}',
       ],
     }),
   ],
@@ -114,7 +114,7 @@ module.exports = {
       patterns: [
         'text-{color}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing},
+        '{screens}:gap-{spacing}',
       ],
     }),
   ],
