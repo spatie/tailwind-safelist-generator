@@ -123,6 +123,8 @@ module.exports = {
 
 Each token wrapped in `{}` will be passed through Tailwind's `theme()` helper to retrieve all possible values. Then the plugin generates a list of all combinations.
 
+List of all available tokens can be found [here](https://tailwindcss.com/docs/theme#configuration-reference).
+
 ```txt
 text-{colors} → text-{red-100,red-200,…}
 
