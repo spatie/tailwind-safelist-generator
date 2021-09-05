@@ -17,7 +17,7 @@ module.exports = {
       patterns: [
         'text-{colors}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing}',
+        '{screens}:gap-{gap}',
       ],
     }),
   ],
@@ -75,7 +75,7 @@ module.exports = {
       patterns: [
         'text-{colors}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing}',
+        '{screens}:gap-{gap}',
       ],
     }),
   ],
@@ -114,7 +114,7 @@ module.exports = {
       patterns: [
         'text-{color}',
         'border-{borderWidth}',
-        '{screens}:gap-{spacing}',
+        '{screens}:gap-{gap}',
       ],
     }),
   ],
@@ -133,7 +133,7 @@ text-red-200
 Using more than one token may generate a long list of combinations:
 
 ```txt
-{screens}:gap-{spacing} → {sm,lg}:gap-{0,1,2,4}
+{screens}:gap-{gap} → {sm,lg}:gap-{0,1,2,4,…}
 
 sm:gap-0
 sm:gap-1
