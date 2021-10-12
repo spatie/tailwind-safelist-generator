@@ -12,7 +12,7 @@ module.exports.cartesian = function cartesian(array) {
 module.exports.deepKeys = function deepKeys(object, separator = '.', prefix = '') {
     return Object.keys(object).reduce((result, key) => {
         if (Array.isArray(object[key])) {
-            return [...result, key];
+            return [...result, prefix + key];
         } else if (typeof object[key] === 'object' && object[key] !== null) {
             return [...result, ...deepKeys(object[key], separator, prefix + key + separator)];
         }
