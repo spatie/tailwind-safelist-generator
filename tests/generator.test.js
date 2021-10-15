@@ -5,7 +5,8 @@ const theme = (key, fallback) =>
         spacing: { 0: '0', 1: '0.25rem' },
         colors: { white: 'white', black: 'black', red: { 100: '#fee2e2', 900: '#7f1d1d' } },
         borderWidth: { 0: '0', DEFAULT: '1px' },
-        screens: { sm: '640px', lg: '1024px' }
+        screens: { sm: '640px', lg: '1024px' },
+        aspectRatios: {'21-9': [21, 9], '16-9': [16, 9]},
     }[key] || fallback)
 
 it('generates a safelist without tokens', () =>
@@ -16,6 +17,9 @@ it('generates a safelist with a token', () =>
 
 it('generates a safelist with multiple tokens', () =>
     expect(generator(theme)(['{screens}:m-{spacing}'])).toEqual(['sm:m-0', 'lg:m-0', 'sm:m-1', 'lg:m-1']))
+
+it('generates a safelist with a token using array values', () =>
+    expect(generator(theme)(['embed-{aspectRatios}'])).toEqual(['embed-21-9', 'embed-16-9']))
 
 it('strips "DEFAULT" keys', () =>
     expect(generator(theme)(['border-{borderWidth}'])).toEqual(['border-0', 'border']))
