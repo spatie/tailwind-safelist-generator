@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "tailwindcss": "^2.2.7"
+    "tailwindcss": "^2.2.7 || ^3.0.0"
   },
   "devDependencies": {
     "jest": "^27.0.6",
