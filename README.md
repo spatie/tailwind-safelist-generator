@@ -9,8 +9,8 @@ With `tailwind-safelist-generator`, you can generate a `safelist.txt` file for y
 
 ```js
 module.exports = {
-  mode: 'jit'
-  purge: [
+  mode: 'jit',
+  content: [
     './**/*.html',
     './safelist.txt',
   ],
@@ -38,8 +38,8 @@ text-red-200
 
 ```js
 module.exports = {
-  mode: 'jit'
-  purge: [
+  mode: 'jit',
+  content: [
     './**/*.html',
     './safelist.txt',
   ],
@@ -68,8 +68,8 @@ Next, register the plugin in your Tailwind configuration file and specify the pa
 
 ```js
 module.exports = {
-  mode: 'jit'
-  purge: [
+  mode: 'jit',
+  content: [
     './**/*.html',
     './safelist.txt',
   ],
